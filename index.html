@@ -5,51 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yeray - Creator & IA Expert</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide-react@0.292.0/dist/umd/lucide.min.js"></script>
+    <script src="https://unpkg.com/lucide@0.292.0/dist/umd/lucide.min.js"></script>
 
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Custom CSS for animations, gradients, and effects */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc;
             background-image: linear-gradient(to bottom, white, #f8fafc);
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-x: hidden;
         }
-
-        /* Glow effect for profile picture and hovered links */
         .glow-effect {
             box-shadow: 0 0 25px rgba(155, 238, 44, 0.4);
         }
-        
         .link-card:hover {
             transform: scale(1.02);
             box-shadow: 0 10px 20px -5px rgba(0,0,0,0.08), 0 0 20px rgba(155, 238, 44, 0.3);
         }
-
-        /* Staggered fade-in animation */
         .fade-in-item {
             opacity: 0;
             transform: translateY(-20px);
             animation: fadeIn 0.5s ease-out forwards;
         }
-
         @keyframes fadeIn {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
-        /* Course form card styles */
         .form-card {
             background: white;
             border: 1px solid rgba(155, 238, 44, 0.2);
@@ -57,26 +44,22 @@
             overflow: hidden;
             box-shadow: 0 10px 30px -10px rgba(0,0,0,0.15), 0 0 0 1px rgba(155, 238, 44, 0.1);
         }
-        
         .form-card:hover {
             box-shadow: 0 20px 40px -15px rgba(0,0,0,0.2), 0 0 0 1px rgba(155, 238, 44, 0.2);
             transform: translateY(-2px);
         }
-        
         .form-card:before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            border-radius: 1rem; /* 16px */
-            padding: 1px; /* border thickness */
+            border-radius: 1rem;
+            padding: 1px;
             background: linear-gradient(135deg, rgba(155, 238, 44, 0.3), rgba(155, 238, 44, 0.1));
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
             pointer-events: none;
         }
-
-        /* PS2 Game Cover Styles */
         .ps2-cover-container {
             width: 80px;
             height: 80px;
@@ -88,23 +71,19 @@
             background: linear-gradient(135deg, rgba(26,1,56,0.05) 0%, rgba(155,238,44,0.05) 100%);
             border: 2px solid rgba(155,238,44,0.1);
         }
-        
         .ps2-cover-gif {
             width: 72px;
             height: 72px;
             object-fit: contain;
             filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
         }
-
-        /* Responsive YouTube Embed */
         .video-container {
             position: relative;
             overflow: hidden;
             width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            padding-top: 56.25%;
             border-radius: 16px;
         }
-
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -114,9 +93,6 @@
             width: 100%;
             height: 100%;
         }
-
-
-        /* Decorative floating circles */
         .floating-circle {
             position: fixed;
             background-color: #9bee2c;
@@ -125,13 +101,10 @@
             animation: float 10s ease-in-out infinite;
             z-index: 0;
         }
-
         @keyframes float {
             0%, 100% { transform: translateY(0px) translateX(0px); }
             50% { transform: translateY(-20px) translateX(10px); }
         }
-        
-        /* Ensure icons are correctly sized */
         i[data-lucide], .custom-icon {
             width: 20px;
             height: 20px;
@@ -139,15 +112,12 @@
             stroke-width: 2;
             fill: none;
         }
-
-        /* Section title styles with logos */
         .section-title {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
         }
-
         .section-logo {
             width: 32px;
             height: 32px;
@@ -158,14 +128,10 @@
 </head>
 <body class="text-[#1a0138] antialiased">
 
-    <!-- Decorative floating circles -->
     <div class="floating-circle" style="width: 150px; height: 150px; top: 5%; left: -50px; animation-duration: 12s;"></div>
     <div class="floating-circle" style="width: 200px; height: 200px; bottom: -100px; right: -80px; animation-duration: 15s; animation-delay: 2s;"></div>
 
-    <!-- Main container -->
     <main class="relative z-10 flex flex-col items-center justify-center min-h-screen p-4">
-        
-        <!-- Header Section -->
         <header class="text-center mb-8 fade-in-item" style="animation-delay: 0.1s;">
             <div class="flex items-center justify-center space-x-4 mb-4">
                 <img src="https://i.imgur.com/eYbvWnI.png" alt="LeroySmer" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg glow-effect transition-transform duration-300 hover:scale-105">
@@ -179,10 +145,7 @@
             </p>
         </header>
 
-        <!-- Main Content Container -->
         <div class="w-full max-w-md space-y-6">
-
-            <!-- 1. Course Email Form -->
             <div class="fade-in-item form-card p-6 rounded-2xl w-full transition-all duration-300" style="animation-delay: 0.2s;">
                 <div class="flex items-start gap-4 mb-4">
                     <div class="flex flex-col items-center flex-shrink-0">
@@ -196,8 +159,6 @@
                         <p class="text-sm text-gray-600 leading-relaxed">¡Apúntate y sé el primero en saberlo cuando esté disponible!</p>
                     </div>
                 </div>
-                <!-- IMPORTANT: Replace the action URL with your own from Formspree.io -->
-                <!-- EJEMPLO: action="https://formspree.io/f/tu_id_aqui" -->
                 <form id="interest-form" action="https://formspree.io/f/xeozabzd" method="POST" class="flex flex-col sm:flex-row gap-3">
                     <input type="email" name="email" placeholder="Tu correo electrónico" required class="flex-grow p-3 rounded-lg bg-gray-50 text-[#1a0138] placeholder-gray-500 border border-gray-200 focus:ring-2 focus:ring-[#9bee2c] focus:outline-none focus:border-[#9bee2c] transition">
                     <button type="submit" class="p-3 rounded-lg bg-gradient-to-r from-[#9bee2c] to-[#7bc91f] text-[#1a0138] font-bold transition-transform hover:scale-105 shadow-md whitespace-nowrap">
@@ -207,33 +168,27 @@
                 <p id="form-success-message" class="text-center text-[#9bee2c] mt-3 text-sm font-semibold hidden">¡Gracias! Te avisaremos en cuanto esté listo.</p>
             </div>
 
-            <!-- 2. Latest Videos Section -->
             <div class="fade-in-item w-full" style="animation-delay: 0.3s;">
                 <h2 class="text-xl font-bold text-center mb-4 text-[#1a0138]">Últimos Vídeos</h2>
                 <div class="space-y-4">
-                    <!-- Video 1 -->
                     <div class="video-container shadow-lg">
-                        <iframe src="<iframe src="https://www.youtube.com/embed/qkqsXCTP5yw?si=1z-lr6AYBbOuN4dq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/qkqsXCTP5yw?si=1z-lr6AYBbOuN4dq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
                     </div>
-                    <!-- Video 2 -->
                     <div class="video-container shadow-lg">
-                        <iframe src="https://www.youtube.com/embed/k8iaQOg86W0?si=FxC6lUzW5IC0f__T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/k8iaQOg86W0?si=FxC6lUzW5IC0f__T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
                     </div>
-                    <!-- Video 3 -->
                     <div class="video-container shadow-lg">
-                        <iframe src="https://www.youtube.com/embed/qql6audIYr8?si=Q9vWopm-bk0_LCIu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/qql6audIYr8?si=Q9vWopm-bk0_LCIu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
 
-            <!-- 3. Social Links Section -->
             <div class="space-y-6">
                 <div class="section-title">
                     <img src="https://i.imgur.com/xfgrJhN.png" alt="OddlyOrdinary" class="section-logo">
                     <h2 class="text-xl font-bold text-center text-[#1a0138] border-b-2 border-[#9bee2c] pb-2">Canales de IA</h2>
                 </div>
                 <div class="space-y-4">
-                    <!-- AI Channel -->
                     <a href="https://www.youtube.com/@OddlyOrdinaryai" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay: 0.4s;">
                         <div class="flex-shrink-0 mr-4">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -259,7 +214,6 @@
                         </svg>
                     </a>
                     
-                    <!-- TikTok -->
                     <a href="https://www.tiktok.com/@oddlyordinaryai" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay: 0.5s;">
                         <div class="flex-shrink-0 mr-4">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -274,7 +228,6 @@
                         </svg>
                     </a>
 
-                    <!-- AI Instagram -->
                     <a href="https://www.instagram.com/oddlyordinaryai/" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay: 0.6s;">
                         <div class="flex-shrink-0 mr-4">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -296,7 +249,6 @@
                     <h2 class="text-xl font-bold text-center text-[#1a0138] border-b-2 border-[#9bee2c] pb-2">Canales Personales</h2>
                 </div>
                 <div class="space-y-4">
-                    <!-- MessagePerfect AI App -->
                     <a href="https://play.google.com/store/apps/details?id=com.messageperfect.ai" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay: 0.7s;">
                         <div class="flex-shrink-0 mr-4">
                             <img src="https://i.imgur.com/V49Yk52.png" alt="MessagePerfect AI" class="w-5 h-5 rounded object-cover">
@@ -308,7 +260,6 @@
                         </svg>
                     </a>
 
-                    <!-- Personal Channel -->
                     <a href="https://www.youtube.com/@mrleroysmerlin" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay: 0.8s;">
                         <div class="flex-shrink-0 mr-4">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -323,7 +274,6 @@
                         </svg>
                     </a>
 
-                    <!-- Personal TikTok -->
                     <a href="https://www.tiktok.com/@leroysmer" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay: 0.9s;">
                         <div class="flex-shrink-0 mr-4">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -338,7 +288,6 @@
                         </svg>
                     </a>
 
-                    <!-- Personal Instagram -->
                     <a href="https://www.instagram.com/leroysmer/" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay: 1.0s;">
                         <div class="flex-shrink-0 mr-4">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -357,20 +306,17 @@
             </div>
         </div>
         
-        <!-- Footer -->
         <footer class="text-center mt-12 fade-in-item" style="animation-delay: 1s;">
             <p class="text-gray-500 text-sm">&copy; <span id="year"></span> Yeray. Todos los derechos reservados.</p>
         </footer>
     </main>
 
     <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-
-        // Set current year in footer
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // --- Form Submission Handler ---
         const form = document.getElementById('interest-form');
         const successMessage = document.getElementById('form-success-message');
 
@@ -401,7 +347,6 @@
                 alert('Oops! Hubo un problema al enviar el formulario.');
             });
         });
-
     </script>
 </body>
 </html>

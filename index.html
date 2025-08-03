@@ -4,135 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yeray - Creator & IA Expert</title>
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@0.292.0/dist/umd/lucide.min.js"></script>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            background-image: linear-gradient(to bottom, white, #f8fafc);
-            overflow-x: hidden;
-        }
-        .glow-effect {
-            box-shadow: 0 0 25px rgba(155, 238, 44, 0.4);
-        }
-        .link-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.08), 0 0 20px rgba(155, 238, 44, 0.3);
-        }
-        .fade-in-item {
-            opacity: 0;
-            transform: translateY(-20px);
-            animation: fadeIn 0.5s ease-out forwards;
-        }
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .form-card {
-            background: white;
-            border: 1px solid rgba(155, 238, 44, 0.2);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.15), 0 0 0 1px rgba(155, 238, 44, 0.1);
-        }
-        .form-card:hover {
-            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.2), 0 0 0 1px rgba(155, 238, 44, 0.2);
-            transform: translateY(-2px);
-        }
-        .form-card:before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            border-radius: 1rem;
-            padding: 1px;
-            background: linear-gradient(135deg, rgba(155, 238, 44, 0.3), rgba(155, 238, 44, 0.1));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-        }
-        .ps2-cover-container {
-            width: 80px;
-            height: 80px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 4px;
-            background: linear-gradient(135deg, rgba(26,1,56,0.05) 0%, rgba(155,238,44,0.05) 100%);
-            border: 2px solid rgba(155,238,44,0.1);
-        }
-        .ps2-cover-gif {
-            width: 72px;
-            height: 72px;
-            object-fit: contain;
-            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
-        }
-        .video-container {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            padding-top: 56.25%;
-            border-radius: 16px;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-        }
-        .floating-circle {
-            position: fixed;
-            background-color: #9bee2c;
-            border-radius: 50%;
-            opacity: 0.1;
-            animation: float 10s ease-in-out infinite;
-            z-index: 0;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) translateX(0px); }
-            50% { transform: translateY(-20px) translateX(10px); }
-        }
-        i[data-lucide], .custom-icon {
-            width: 20px;
-            height: 20px;
-            stroke: currentColor;
-            stroke-width: 2;
-            fill: none;
-        }
-        .section-title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-        }
-        .section-logo {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            object-fit: cover;
+        body{font-family:'Inter',sans-serif;background-color:#f8fafc;background-image:linear-gradient(to bottom,white,#f8fafc);overflow-x:hidden}
+        .glow-effect{box-shadow:0 0 25px rgba(155,238,44,.4)}
+        .link-card:hover{transform:scale(1.02);box-shadow:0 10px 20px -5px rgba(0,0,0,.08),0 0 20px rgba(155,238,44,.3)}
+        .fade-in-item{opacity:0;transform:translateY(-20px);animation:fadeIn .5s ease-out forwards}
+        @keyframes fadeIn{to{opacity:1;transform:translateY(0)}}
+        .form-card{background:white;border:1px solid rgba(155,238,44,.2);position:relative;overflow:hidden;box-shadow:0 10px 30px -10px rgba(0,0,0,.15),0 0 0 1px rgba(155,238,44,.1)}
+        .form-card:hover{box-shadow:0 20px 40px -15px rgba(0,0,0,.2),0 0 0 1px rgba(155,238,44,.2);transform:translateY(-2px)}
+        .form-card:before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border-radius:1rem;padding:1px;background:linear-gradient(135deg,rgba(155,238,44,.3),rgba(155,238,44,.1));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+        .ps2-cover-container{width:80px;height:80px;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:4px;background:linear-gradient(135deg,rgba(26,1,56,.05) 0%,rgba(155,238,44,.05) 100%);border:2px solid rgba(155,238,44,.1)}
+        .ps2-cover-gif{width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(0,0,0,.1))}
+        .video-container{position:relative;overflow:hidden;width:100%;padding-top:56.25%;border-radius:16px}
+        .video-container iframe{position:absolute;top:0;left:0;bottom:0;right:0;width:100%;height:100%}
+        .floating-circle{position:fixed;background-color:#9bee2c;border-radius:50%;opacity:.1;animation:float 10s ease-in-out infinite;z-index:0}
+        @keyframes float{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-20px) translateX(10px)}}
+        i[data-lucide],.custom-icon{width:20px;height:20px;stroke:currentColor;stroke-width:2;fill:none}
+        .section-title{display:flex;align-items:center;justify-content:center;gap:12px}
+        .section-logo{width:32px;height:32px;border-radius:50%;object-fit:cover}
+
+        /* Fan de imágenes (más pequeño) */
+        .fan{position:relative;width:300px;height:180px}
+        .fan img{position:absolute;top:0;left:50%;transform-origin:bottom center;transition:transform .35s ease,box-shadow .35s ease;box-shadow:0 10px 20px rgba(0,0,0,.15)}
+        .fan .card-1{transform:translateX(-50%) rotate(-12deg)}
+        .fan .card-2{transform:translateX(-50%) rotate(-4deg)}
+        .fan .card-3{transform:translateX(-50%) rotate(4deg)}
+        .fan .card-4{transform:translateX(-50%) rotate(12deg)}
+        .fan:hover .card-1{transform:translateX(calc(-50% - 60px)) rotate(-16deg)}
+        .fan:hover .card-2{transform:translateX(calc(-50% - 12px)) rotate(-6deg)}
+        .fan:hover .card-3{transform:translateX(calc(-50% + 36px)) rotate(6deg)}
+        .fan:hover .card-4{transform:translateX(calc(-50% + 84px)) rotate(16deg)}
+
+        .prompt-box{background:#0b011a;border:1px solid rgba(155,238,44,.25);color:#e9e7ee}
+        .prompt-box textarea{background:transparent;color:#e9e7ee}
+
+        @media (max-width:640px){
+            .fan{width:260px;height:160px}
+            .fan:hover .card-1{transform:translateX(calc(-50% - 46px)) rotate(-16deg)}
+            .fan:hover .card-2{transform:translateX(calc(-50% - 10px)) rotate(-6deg)}
+            .fan:hover .card-3{transform:translateX(calc(-50% + 28px)) rotate(6deg)}
+            .fan:hover .card-4{transform:translateX(calc(-50% + 66px)) rotate(16deg)}
         }
     </style>
 </head>
 <body class="text-[#1a0138] antialiased">
-
-    <div class="floating-circle" style="width: 150px; height: 150px; top: 5%; left: -50px; animation-duration: 12s;"></div>
-    <div class="floating-circle" style="width: 200px; height: 200px; bottom: -100px; right: -80px; animation-duration: 15s; animation-delay: 2s;"></div>
+    <div class="floating-circle" style="width:150px;height:150px;top:5%;left:-50px;animation-duration:12s;"></div>
+    <div class="floating-circle" style="width:200px;height:200px;bottom:-100px;right:-80px;animation-duration:15s;animation-delay:2s;"></div>
 
     <main class="relative z-10 flex flex-col items-center justify-center min-h-screen p-4">
-        <header class="text-center mb-8 fade-in-item" style="animation-delay: 0.1s;">
+        <header class="text-center mb-8 fade-in-item" style="animation-delay:.1s;">
             <div class="flex items-center justify-center space-x-4 mb-4">
                 <img src="https://i.imgur.com/eYbvWnI.png" alt="LeroySmer" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg glow-effect transition-transform duration-300 hover:scale-105">
                 <span class="text-3xl font-bold text-[#1a0138]">X</span>
@@ -140,13 +65,11 @@
             </div>
             <h1 class="text-3xl md:text-4xl font-bold text-[#1a0138]">Leroysmer - Creator & IA Expert</h1>
             <p class="text-md md:text-lg text-gray-600 mt-1">Colaboración: Leroysmer X OddlyOrdinary</p>
-            <p class="max-w-md mx-auto text-gray-500 mt-3 text-sm md:text-base">
-                Creador de contenido especializado en IA. Te enseño a crear videos increíbles con inteligencia artificial.
-            </p>
+            <p class="max-w-md mx-auto text-gray-500 mt-3 text-sm md:text-base">Creador de contenido especializado en IA. Te enseño a crear videos increíbles con inteligencia artificial.</p>
         </header>
 
         <div class="w-full max-w-md space-y-6">
-            <div class="fade-in-item form-card p-6 rounded-2xl w-full transition-all duration-300" style="animation-delay: 0.2s;">
+            <div class="fade-in-item form-card p-6 rounded-2xl w-full transition-all duration-300" style="animation-delay:.2s;">
                 <div class="flex items-start gap-4 mb-4">
                     <div class="flex flex-col items-center flex-shrink-0">
                         <div class="ps2-cover-container mb-3">
@@ -159,18 +82,44 @@
                         <p class="text-sm text-gray-600 leading-relaxed">¡Apúntate y sé el primero en saberlo cuando esté disponible!</p>
                     </div>
                 </div>
-                <form id="interest-form" action="https://formspree.io/f/xeozabzd" method="POST" class="flex flex-col sm:flex-row gap-3">
+
+                <!-- Abanico de 4 imágenes -->
+                <div class="flex flex-col items-center gap-4 mb-4">
+                    <div class="fan">
+                        <img class="card-1 rounded-xl w-28 sm:w-32 aspect-[9/16] object-cover" src="https://i.imgur.com/eiECzur.jpg" alt="Escena 1 9:16">
+                        <img class="card-2 rounded-xl w-28 sm:w-32 aspect-[9/16] object-cover" src="https://i.imgur.com/M5I4kYN.jpg" alt="Escena 2 9:16">
+                        <img class="card-3 rounded-xl w-28 sm:w-32 aspect-[9/16] object-cover" src="https://i.imgur.com/Xzb9syA.jpg" alt="Escena 3 9:16">
+                        <img class="card-4 rounded-xl w-28 sm:w-32 aspect-[9/16] object-cover" src="https://i.imgur.com/tz6Q8Ol.jpg" alt="Escena 4 9:16">
+                    </div>
+                    <p class="text-xs text-gray-500 -mt-1">Imágenes generadas con <span class="font-semibold">Seedance + Magnific</span> en Freepik · Formato 9:16</p>
+                </div>
+
+                <!-- Prompt en desplegable (añadimos un pelín de espacio superior) -->
+                <details class="rounded-xl overflow-hidden mt-3">
+                    <summary class="cursor-pointer select-none w-full flex items-center justify-between px-4 py-3 rounded-xl bg-[#1a0138] text-white">
+                        <span class="font-semibold">Ver prompt de la escena</span>
+                        <i data-lucide="chevron-down"></i>
+                    </summary>
+                    <div class="prompt-box p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm text-[#9bee2c] font-semibold">Prompt (Seedance + Magnific)</span>
+                            <button id="copyPrompt" class="text-[#1a0138] bg-[#9bee2c] px-3 py-1.5 rounded-md text-sm font-bold active:scale-95">Copiar</button>
+                        </div>
+                        <textarea id="promptText" rows="7" class="w-full p-3 rounded-lg border border-[#241146]" readonly>Ultra low-angle wide shot from behind, cinematic composition. A lone figure with a black backpack marked by a glowing green infinity symbol and a simple purple t-shirt descends through [PON AQUÍ TU TERRENO]. Around them, the local world is alive and accurate to its time: [PON AQUÍ QUIÉN HAY EN LA ESCENA] interact naturally, perform daily routines, and fill the frame with subtle activity. The environment opens to a vast panoramic vista that reveals the scale and complexity of the setting: [PON AQUÍ LA VISTA PANORÁMICA], rendered with realistic lighting and deep depth of field. No fantasy, no anachronisms.</textarea>
+                    </div>
+                </details>
+
+                <form id="interest-form" action="https://formspree.io/f/xeozabzd" method="POST" class="flex flex-col sm:flex-row gap-3 mt-4">
                     <input type="email" name="email" placeholder="Tu correo electrónico" required class="flex-grow p-3 rounded-lg bg-gray-50 text-[#1a0138] placeholder-gray-500 border border-gray-200 focus:ring-2 focus:ring-[#9bee2c] focus:outline-none focus:border-[#9bee2c] transition">
-                    <button type="submit" class="p-3 rounded-lg bg-gradient-to-r from-[#9bee2c] to-[#7bc91f] text-[#1a0138] font-bold transition-transform hover:scale-105 shadow-md whitespace-nowrap">
-                        Apuntarme
-                    </button>
+                    <button type="submit" class="p-3 rounded-lg bg-gradient-to-r from-[#9bee2c] to-[#7bc91f] text-[#1a0138] font-bold transition-transform hover:scale-105 shadow-md whitespace-nowrap">Apuntarme</button>
                 </form>
                 <p id="form-success-message" class="text-center text-[#9bee2c] mt-3 text-sm font-semibold hidden">¡Gracias! Te avisaremos en cuanto esté listo.</p>
             </div>
 
-            <div class="fade-in-item w-full" style="animation-delay: 0.3s;">
+            <!-- Últimos vídeos en cuadrícula -->
+            <div class="fade-in-item w-full" style="animation-delay:.3s;">
                 <h2 class="text-xl font-bold text-center mb-4 text-[#1a0138]">Últimos Vídeos</h2>
-                <div class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="video-container shadow-lg">
                         <iframe src="https://www.youtube.com/embed/qkqsXCTP5yw?si=1z-lr6AYBbOuN4dq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
                     </div>
@@ -179,6 +128,9 @@
                     </div>
                     <div class="video-container shadow-lg">
                         <iframe src="https://www.youtube.com/embed/qql6audIYr8?si=Q9vWopm-bk0_LCIu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="video-container shadow-lg">
+                        <iframe src="https://www.youtube.com/embed/Qzk1Cm02IWc?si=mm-T2emvCMjsQK2F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
@@ -189,58 +141,26 @@
                     <h2 class="text-xl font-bold text-center text-[#1a0138] border-b-2 border-[#9bee2c] pb-2">Canales de IA</h2>
                 </div>
                 <div class="space-y-4">
-                    <a href="https://www.youtube.com/@OddlyOrdinaryai" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay: 0.4s;">
+                    <a href="https://www.youtube.com/@OddlyOrdinaryai" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay:.4s;">
                         <div class="flex-shrink-0 mr-4">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/>
-                                <path d="M9 13a4.5 4.5 0 0 0 3 4"/>
-                                <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/>
-                                <path d="M3.477 10.896a4 4 0 0 1 .585-.396"/>
-                                <path d="M6 18a4 4 0 0 1-1.967-.516"/>
-                                <path d="M12 13h4"/>
-                                <path d="M12 18h6a2 2 0 0 1 2 2v1"/>
-                                <path d="M12 8h8"/>
-                                <path d="M16 8V5a2 2 0 0 1 2-2"/>
-                                <circle cx="16" cy="13" r="0.5"/>
-                                <circle cx="18" cy="3" r="0.5"/>
-                                <circle cx="20" cy="21" r="0.5"/>
-                                <circle cx="20" cy="8" r="0.5"/>
-                            </svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M9 13a4.5 4.5 0 0 0 3 4"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M12 13h4"/><path d="M12 18h6a2 2 0 0 1 2 2v1"/><path d="M12 8h8"/><path d="M16 8V5a2 2 0 0 1 2-2"/><circle cx="16" cy="13" r=".5"/><circle cx="18" cy="3" r=".5"/><circle cx="20" cy="21" r=".5"/><circle cx="20" cy="8" r=".5"/></svg>
                         </div>
                         <div class="flex-grow font-semibold">Canal de IA</div>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-[#1a0138] transition-colors">
-                            <path d="m7 7 10 10"/>
-                            <path d="M17 7v10h-10"/>
-                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-[#1a0138] transition-colors"><path d="m7 7 10 10"/><path d="M17 7v10h-10"/></svg>
                     </a>
-                    
-                    <a href="https://www.tiktok.com/@oddlyordinaryai" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay: 0.5s;">
+                    <a href="https://www.tiktok.com/@oddlyordinaryai" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay:.5s;">
                         <div class="flex-shrink-0 mr-4">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"/>
-                                <polygon points="10,8 16,12 10,16 10,8"/>
-                            </svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16 10,8"/></svg>
                         </div>
                         <div class="flex-grow font-semibold">TikTok</div>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-[#1a0138] transition-colors">
-                            <path d="m7 7 10 10"/>
-                            <path d="M17 7v10h-10"/>
-                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-[#1a0138] transition-colors"><path d="m7 7 10 10"/><path d="M17 7v10h-10"/></svg>
                     </a>
-
-                    <a href="https://www.instagram.com/oddlyordinaryai/" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay: 0.6s;">
+                    <a href="https://www.instagram.com/oddlyordinaryai/" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay:.6s;">
                         <div class="flex-shrink-0 mr-4">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-                                <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-                            </svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                         </div>
                         <div class="flex-grow font-semibold">Instagram</div>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-[#1a0138] transition-colors">
-                            <path d="m7 7 10 10"/>
-                            <path d="M17 7v10h-10"/>
-                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-[#1a0138] transition-colors"><path d="m7 7 10 10"/><path d="M17 7v10h-10"/></svg>
                     </a>
                 </div>
 
@@ -249,104 +169,70 @@
                     <h2 class="text-xl font-bold text-center text-[#1a0138] border-b-2 border-[#9bee2c] pb-2">Canales Personales</h2>
                 </div>
                 <div class="space-y-4">
-                    <a href="https://play.google.com/store/apps/details?id=com.messageperfect.ai" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay: 0.7s;">
+                    <a href="https://play.google.com/store/apps/details?id=com.messageperfect.ai" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay:.7s;">
                         <div class="flex-shrink-0 mr-4">
                             <img src="https://i.imgur.com/V49Yk52.png" alt="MessagePerfect AI" class="w-5 h-5 rounded object-cover">
                         </div>
                         <div class="flex-grow font-semibold">MessagePerfect AI App</div>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-[#1a0138] transition-colors">
-                            <path d="m7 7 10 10"/>
-                            <path d="M17 7v10h-10"/>
-                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-[#1a0138] transition-colors"><path d="m7 7 10 10"/><path d="M17 7v10h-10"/></svg>
                     </a>
-
-                    <a href="https://www.youtube.com/@mrleroysmerlin" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay: 0.8s;">
+                    <a href="https://www.youtube.com/@mrleroysmerlin" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay:.8s;">
                         <div class="flex-shrink-0 mr-4">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                                <circle cx="12" cy="7" r="4"/>
-                            </svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                         </div>
                         <div class="flex-grow font-semibold">Canal Personal</div>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-[#1a0138] transition-colors">
-                            <path d="m7 7 10 10"/>
-                            <path d="M17 7v10h-10"/>
-                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-[#1a0138] transition-colors"><path d="m7 7 10 10"/><path d="M17 7v10h-10"/></svg>
                     </a>
-
-                    <a href="https://www.tiktok.com/@leroysmer" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay: 0.9s;">
+                    <a href="https://www.tiktok.com/@leroysmer" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay:.9s;">
                         <div class="flex-shrink-0 mr-4">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"/>
-                                <polygon points="10,8 16,12 10,16 10,8"/>
-                            </svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16 10,8"/></svg>
                         </div>
                         <div class="flex-grow font-semibold">TikTok</div>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-[#1a0138] transition-colors">
-                            <path d="m7 7 10 10"/>
-                            <path d="M17 7v10h-10"/>
-                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-[#1a0138] transition-colors"><path d="m7 7 10 10"/><path d="M17 7v10h-10"/></svg>
                     </a>
-
-                    <a href="https://www.instagram.com/leroysmer/" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay: 1.0s;">
+                    <a href="https://www.instagram.com/leroysmer/" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay:1s;">
                         <div class="flex-shrink-0 mr-4">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-                                <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-                            </svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                         </div>
                         <div class="flex-grow font-semibold">Instagram</div>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-[#1a0138] transition-colors">
-                            <path d="m7 7 10 10"/>
-                            <path d="M17 7v10h-10"/>
-                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 group-hover:text-[#1a0138] transition-colors"><path d="m7 7 10 10"/><path d="M17 7v10h-10"/></svg>
                     </a>
                 </div>
             </div>
         </div>
-        
-        <footer class="text-center mt-12 fade-in-item" style="animation-delay: 1s;">
+
+        <footer class="text-center mt-12 fade-in-item" style="animation-delay:1s;">
             <p class="text-gray-500 text-sm">&copy; <span id="year"></span> Yeray. Todos los derechos reservados.</p>
         </footer>
     </main>
 
     <script>
-        if (window.lucide && typeof window.lucide.createIcons === 'function') {
-            window.lucide.createIcons();
-        }
-        document.getElementById('year').textContent = new Date().getFullYear();
+        if (window.lucide && typeof window.lucide.createIcons==='function'){window.lucide.createIcons()}
+        document.getElementById('year').textContent=new Date().getFullYear()
 
-        const form = document.getElementById('interest-form');
-        const successMessage = document.getElementById('form-success-message');
+        const form=document.getElementById('interest-form')
+        const successMessage=document.getElementById('form-success-message')
+        form.addEventListener('submit',function(event){
+            event.preventDefault()
+            const formData=new FormData(form)
+            fetch(form.action,{method:'POST',body:formData,headers:{'Accept':'application/json'}}).then(response=>{
+                if(response.ok){form.style.display='none';successMessage.style.display='block'}
+                else{response.json().then(data=>{if(Object.hasOwn(data,'errors')){alert(data["errors"].map(error=>error["message"]).join(", "))}else{alert('Oops! Hubo un problema al enviar el formulario.')}})}
+            }).catch(()=>{alert('Oops! Hubo un problema al enviar el formulario.')})
+        })
 
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const formData = new FormData(form);
-            
-            fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    form.style.display = 'none';
-                    successMessage.style.display = 'block';
-                } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            alert(data["errors"].map(error => error["message"]).join(", "));
-                        } else {
-                            alert('Oops! Hubo un problema al enviar el formulario.');
-                        }
-                    })
-                }
-            }).catch(error => {
-                alert('Oops! Hubo un problema al enviar el formulario.');
-            });
-        });
+        const copyBtn=document.getElementById('copyPrompt')
+        const promptText=document.getElementById('promptText')
+        copyBtn.addEventListener('click',async()=>{
+            try{
+                await navigator.clipboard.writeText(promptText.value);
+                copyBtn.textContent='Copiado';
+                setTimeout(()=>copyBtn.textContent='Copiar',1500)
+            }catch(e){
+                promptText.select();
+                document.execCommand('copy')
+            }
+        })
     </script>
 </body>
 </html>

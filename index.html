@@ -5,36 +5,305 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yeray - Creator & IA Expert</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@0.292.0/dist/umd/lucide.min.js"></script>
+    <!-- Use a specific version of Lucide for consistency -->
+    <script src="https://unpkg.com/lucide@0.378.0/dist/umd/lucide.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body{font-family:'Inter',sans-serif;background-color:#f8fafc;background-image:linear-gradient(to bottom,white,#f8fafc);overflow-x:hidden}
-        .glow-effect{box-shadow:0 0 25px rgba(155,238,44,.4)}
-        .link-card:hover{transform:scale(1.02);box-shadow:0 10px 20px -5px rgba(0,0,0,.08),0 0 20px rgba(155,238,44,.3)}
-        .fade-in-item{opacity:0;transform:translateY(-20px);animation:fadeIn .5s ease-out forwards}
-        @keyframes fadeIn{to{opacity:1;transform:translateY(0)}}
-        .form-card{background:white;border:1px solid rgba(155,238,44,.2);position:relative;overflow:hidden;box-shadow:0 10px 30px -10px rgba(0,0,0,.15),0 0 0 1px rgba(155,238,44,.1)}
-        .form-card:hover{box-shadow:0 20px 40px -15px rgba(0,0,0,.2),0 0 0 1px rgba(155,238,44,.2);transform:translateY(-2px)}
-        .form-card:before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border-radius:1rem;padding:1px;background:linear-gradient(135deg,rgba(155,238,44,.3),rgba(155,238,44,.1));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
-        .ps2-cover-contner{width:80px;height:80px;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:4px;background:linear-gradient(135deg,rgba(26,1,56,.05) 0%,rgba(155,238,44,.05) 100%);border:2px solid rgba(155,238,44,.1)}
-        .ps2-cover-gif{width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(0,0,0,.1))}
-        .video-container{position:relative;overflow:hidden;width:100%;padding-top:56.25%;border-radius:16px}
-        .video-container iframe{position:absolute;top:0;left:0;bottom:0;right:0;width:100%;height:100%}
-        .floating-circle{position:fixed;background-color:#9bee2c;border-radius:50%;opacity:.1;animation:float 10s ease-in-out infinite;z-index:0}
-        @keyframes float{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-20px) translateX(10px)}}
-        i[data-lucide],.custom-icon{width:20px;height:20px;stroke:currentColor;stroke-width:2;fill:none}
-        .section-title{display:flex;align-items:center;justify-content:center;gap:12px}
-        .section-logo{width:32px;height:32px;border-radius:50%;object-fit:cover}
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            /* Smoother gradient */
+            background-image: linear-gradient(to bottom, white, #f8fafc 90%);
+            overflow-x: hidden;
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px rgba(155, 238, 44, .4);
+        }
+        .link-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .link-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .08), 0 0 20px rgba(155, 238, 44, .3);
+        }
+        .fade-in-item {
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn .5s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .form-card {
+            background: white;
+            border: 1px solid rgba(155, 238, 44, .2);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, .15), 0 0 0 1px rgba(155, 238, 44, .1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* New animation for the highlighted card */
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 10px 30px -10px rgba(0, 0, 0, .15), 0 0 0 1px rgba(155, 238, 44, .2), 0 0 35px rgba(155, 238, 44, .3);
+                transform: translateY(0);
+            }
+            50% {
+                box-shadow: 0 20px 40px -15px rgba(0, 0, 0, .2), 0 0 0 1px rgba(155, 238, 44, .3), 0 0 50px rgba(155, 238, 44, .5);
+                transform: translateY(-5px);
+            }
+        }
 
-        /* Fan de imágenes (más pequeño) */
-        .fan{position:relative;width:300px;height:180px}
-        .fan img{position:absolute;top:0;left:50%;transform-origin:bottom center;transition:transform .35s ease,box-shadow .35s ease;box-shadow:0 10px 20px rgba(0,0,0,.15)}
-        .fan .card-1{transform:translateX(-50%) rotate(-12deg)}
-        .fan .card-2{transform:translateX(-50%) rotate(-4deg)}
-        .fan .card-3{transform:translateX(-50%) rotate(4deg)}
-        .fan .card-4{transform:translateX(-50%) rotate(12deg)}
+        /* FIX: Use a more specific selector to combine animations instead of overwriting them */
+        .fade-in-item.highlight-card {
+            /* Run fadeIn first, then after 0.5s, start the pulse-glow animation and loop it */
+            animation: fadeIn .5s ease-out forwards, pulse-glow 3.5s .5s infinite ease-in-out;
+        }
+
+        .form-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 1rem;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(155, 238, 44, .3), rgba(155, 238, 44, .1));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        .ps2-cover-container {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+            background: linear-gradient(135deg, rgba(26, 1, 56, .05) 0%, rgba(155, 238, 44, .05) 100%);
+            border: 2px solid rgba(155, 238, 44, .1);
+        }
+        .ps2-cover-gif {
+            width: 72px;
+            height: 72px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, .1));
+        }
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            border-radius: 16px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .floating-circle {
+            position: fixed;
+            background-color: #9bee2c;
+            border-radius: 50%;
+            opacity: .1;
+            animation: float 10s ease-in-out infinite;
+            z-index: 0;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-20px) translateX(10px); }
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .section-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="text-[#1a0138] antialiased">
+    <!-- Decorative background elements -->
+    <div class="floating-circle" style="width:150px;height:150px;top:5%;left:-50px;animation-duration:12s;"></div>
+    <div class="floating-circle" style="width:200px;height:200px;bottom:-100px;right:-80px;animation-duration:15s;animation-delay:2s;"></div>
+
+    <main class="relative z-10 flex flex-col items-center justify-center min-h-screen p-4">
+        <header class="text-center mb-8 fade-in-item" style="animation-delay:.1s;">
+            <div class="flex items-center justify-center space-x-4 mb-4">
+                <img src="https://i.imgur.com/eYbvWnI.png" alt="LeroySmer" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg glow-effect transition-transform duration-300 hover:scale-105">
+                <span class="text-3xl font-bold text-[#1a0138]">X</span>
+                <img src="https://i.imgur.com/xfgrJhN.png" alt="OddlyOrdinary" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg glow-effect transition-transform duration-300 hover:scale-105">
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold text-[#1a0138]">Leroysmer - Creator & AI Expert</h1>
+            <p class="text-md md:text-lg text-gray-600 mt-1">Colaboración: Leroysmer X OddlyOrdinary</p>
+            <p class="max-w-md mx-auto text-gray-500 mt-3 text-sm md:text-base">Creador de contenido especializado en IA. Te enseño a crear videos increíbles con inteligencia artificial.</p>
+        </header>
+
+        <div class="w-full max-w-md space-y-6">
+            <!-- Course Interest Form Card -->
+            <div class="fade-in-item form-card highlight-card p-6 rounded-2xl w-full" style="animation-delay:.2s;">
+                <div class="flex items-start gap-4 mb-6">
+                    <div class="flex flex-col items-center flex-shrink-0">
+                        <div class="ps2-cover-container mb-3">
+                            <img src="https://i.imgur.com/ZP0uoQE.png" alt="Curso PS2 Style" class="ps2-cover-gif">
+                        </div>
+                        <span class="bg-gradient-to-r from-[#9bee2c] to-[#7bc91f] text-[#1a0138] text-sm font-bold px-4 py-2 rounded-full">LANZAMIENTO PRONTO</span>
+                    </div>
+                    <div class="flex-grow pt-2">
+                        <h3 class="font-bold text-xl text-[#1a0138] mb-2">Curso de Vídeos con IA</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">¡Apúntate y sé el primero en saberlo cuando esté disponible!</p>
+                    </div>
+                </div>
+
+                <form id="interest-form" class="flex flex-col sm:flex-row gap-3 mt-4">
+                    <input type="email" name="email" placeholder="Tu correo electrónico" required class="flex-grow p-3 rounded-lg bg-gray-50 text-[#1a0138] placeholder-gray-500 border border-gray-200 focus:ring-2 focus:ring-[#9bee2c] focus:outline-none focus:border-[#9bee2c] transition">
+                    <button type="submit" class="p-3 rounded-lg bg-gradient-to-r from-[#9bee2c] to-[#7bc91f] text-[#1a0138] font-bold transition-transform hover:scale-105 shadow-md whitespace-nowrap">Apuntarme</button>
+                </form>
+                <p id="form-success-message" class="text-center text-[#9bee2c] mt-3 text-sm font-semibold hidden">¡Gracias! Te avisaremos en cuanto esté listo.</p>
+            </div>
+
+            <!-- Latest Videos Section -->
+            <div class="fade-in-item w-full" style="animation-delay:.3s;">
+                <h2 class="text-xl font-bold text-center mb-4 text-[#1a0138]">Últimos Vídeos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Video 1 -->
+                    <div class="video-container shadow-lg">
+                        <iframe src="https://www.youtube.com/embed/qkqsXCTP5yw?si=1z-lr6AYBbOuN4dq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <!-- Video 2 -->
+                    <div class="video-container shadow-lg">
+                        <iframe src="https://www.youtube.com/embed/k8iaQOg86W0?si=FxC6lUzW5IC0f__T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <!-- Video 3 -->
+                    <div class="video-container shadow-lg">
+                        <iframe src="https://www.youtube.com/embed/qql6audIYr8?si=Q9vWopm-bk0_LCIu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <!-- Video 4 (Updated) -->
+                    <div class="video-container shadow-lg">
+                        <iframe src="https://www.youtube.com/embed/bF9YS9Scb0A?si=vMdewwfOpSlpcKGo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Links Section -->
+            <div class="space-y-6">
+                <!-- AI Channels -->
+                <div class="section-title">
+                    <img src="https://i.imgur.com/xfgrJhN.png" alt="OddlyOrdinary" class="section-logo">
+                    <h2 class="text-xl font-bold text-center text-[#1a0138] border-b-2 border-[#9bee2c] pb-2">Canales de IA</h2>
+                </div>
+                <div class="space-y-4">
+                    <a href="https://www.youtube.com/@OddlyOrdinaryai" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay:.4s;">
+                        <i data-lucide="youtube" class="text-red-600 mr-4"></i>
+                        <div class="flex-grow font-semibold">Canal de IA</div>
+                        <i data-lucide="arrow-up-right" class="text-gray-400 group-hover:text-[#1a0138] transition-colors"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@oddlyordinaryai" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay:.5s;">
+                        <i data-lucide="music-4" class="mr-4"></i> <!-- Lucide icon for TikTok -->
+                        <div class="flex-grow font-semibold">TikTok</div>
+                        <i data-lucide="arrow-up-right" class="text-gray-400 group-hover:text-[#1a0138] transition-colors"></i>
+                    </a>
+                    <a href="https://www.instagram.com/oddlyordinaryai/" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay:.6s;">
+                        <i data-lucide="instagram" class="text-pink-600 mr-4"></i>
+                        <div class="flex-grow font-semibold">Instagram</div>
+                        <i data-lucide="arrow-up-right" class="text-gray-400 group-hover:text-[#1a0138] transition-colors"></i>
+                    </a>
+                </div>
+
+                <!-- Personal Channels -->
+                <div class="section-title">
+                    <img src="https://i.imgur.com/eYbvWnI.png" alt="LeroySmer" class="section-logo">
+                    <h2 class="text-xl font-bold text-center text-[#1a0138] border-b-2 border-[#9bee2c] pb-2">Canales Personales</h2>
+                </div>
+                <div class="space-y-4">
+                    <a href="https://play.google.com/store/apps/details?id=com.messageperfect.ai" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay:.7s;">
+                        <img src="https://i.imgur.com/V49Yk52.png" alt="MessagePerfect AI" class="w-5 h-5 rounded object-cover mr-4">
+                        <div class="flex-grow font-semibold">MessagePerfect AI App</div>
+                        <i data-lucide="arrow-up-right" class="text-gray-400 group-hover:text-[#1a0138] transition-colors"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@mrleroysmerlin" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay:.8s;">
+                        <i data-lucide="user" class="mr-4"></i>
+                        <div class="flex-grow font-semibold">Canal Personal</div>
+                        <i data-lucide="arrow-up-right" class="text-gray-400 group-hover:text-[#1a0138] transition-colors"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@leroysmer" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay:.9s;">
+                        <i data-lucide="music-4" class="mr-4"></i> <!-- Lucide icon for TikTok -->
+                        <div class="flex-grow font-semibold">TikTok</div>
+                        <i data-lucide="arrow-up-right" class="text-gray-400 group-hover:text-[#1a0138] transition-colors"></i>
+                    </a>
+                    <a href="https://www.instagram.com/leroysmer/" target="_blank" class="fade-in-item link-card bg-white shadow-md hover:shadow-lg flex items-center p-4 rounded-2xl w-full transition-all duration-300 min-h-[44px] group" style="animation-delay:1s;">
+                        <i data-lucide="instagram" class="text-pink-600 mr-4"></i>
+                        <div class="flex-grow font-semibold">Instagram</div>
+                        <i data-lucide="arrow-up-right" class="text-gray-400 group-hover:text-[#1a0138] transition-colors"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // --- Initialize Lucide Icons ---
+        lucide.createIcons();
+
+        // --- Form Submission Logic ---
+        const form = document.getElementById('interest-form');
+        const successMessage = document.getElementById('form-success-message');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default page reload
+
+            const formData = new FormData(form);
+            const action = "https://formspree.io/f/xeozabzd"; // Your Formspree endpoint
+
+            fetch(action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // On success, hide the form and show the success message
+                    form.style.display = 'none';
+                    successMessage.classList.remove('hidden');
+                } else {
+                    // Handle server errors
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            // You can display these errors to the user if you want
+                            console.error(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                            console.error('Oops! There was a problem submitting your form');
+                        }
+                    })
+                }
+            }).catch(error => {
+                // Handle network errors
+                console.error('Network error:', error);
+            });
+        });
+
+    </script>
+</body>
+</html>        .fan .card-4{transform:translateX(-50%) rotate(12deg)}
         .fan:hover .card-1{transform:translateX(calc(-50% - 60px)) rotate(-16deg)}
         .fan:hover .card-2{transform:translateX(calc(-50% - 12px)) rotate(-6deg)}
         .fan:hover .card-3{transform:translateX(calc(-50% + 36px)) rotate(6deg)}
